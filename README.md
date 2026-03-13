@@ -14,4 +14,4 @@ A simple command line program written in Python to manage missions.
 1. Download the project
 2. Run the file:
 
-python missions.py
+python task_manager.py
