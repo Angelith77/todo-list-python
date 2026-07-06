@@ -1,3 +1,6 @@
+from random import choice
+
+
 def print_missions(missions):
     print("Your missions:")
     for i, m in enumerate(missions, 1):
@@ -41,7 +44,20 @@ while True:
             user_input = input("Write the mission (or 0 to go back): ")
             if user_input == "0":
                 break
+
+
             missions.append(user_input)
+            while True:
+                choice=int(input("Enter 0 to go back / or 1 to add a mission: "))
+                if choice == 0:
+                    break
+                elif choice == 1:
+                    mission=input("Enter the mission: ")
+                    missions.append(mission)
+                else :
+                    print("Please enter a valid number!")
+
+
             print("Mission added successfully!")
             print_missions(missions)
             save_missions(missions)
@@ -60,6 +76,7 @@ while True:
 
     # --------------------- حذف مهمة ---------------------
     elif num == 3:
+        print_missions(missions)
         while True:
             if len(missions) == 0:
                 print("No missions available to delete.")
@@ -80,6 +97,18 @@ while True:
                 continue
 
             missions.pop(number - 1)
+            while True:
+                print_missions(missions)
+                choice=int(input("Enter 0 to go back / or 1 to delete a mission: "))
+                if choice == 0:
+                    break
+                elif choice == 1:
+                    mission=int(input("Enter the mission number: "))
+                    del missions[mission - 1]
+                    print_missions(missions)
+                else:
+                    print("Please enter a valid number!")
+
             print("Mission deleted successfully!")
             print_missions(missions)
             save_missions(missions)
@@ -88,6 +117,7 @@ while True:
 
     # --------------------- تعديل مهمة ---------------------
     elif num == 4:
+        print_missions(missions)
         while True:
             if len(missions) == 0:
                 print("No missions available to edit.")
@@ -115,7 +145,6 @@ while True:
             break
 
 
-
     # --------------------- إنهاء البرنامج ---------------------
     elif num == 5:
 	    option = input("Are you sure you want to exit? (y/n): ")
@@ -132,5 +161,3 @@ while True:
     # --------------------- خيار غير صحيح ---------------------
     else:
         print("Please choose a valid option from 1 to 5.")
-
-
